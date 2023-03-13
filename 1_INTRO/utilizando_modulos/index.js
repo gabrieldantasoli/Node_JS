@@ -1,6 +1,6 @@
 const fs = require('fs'); // file system
 
-fs.readFile('arquivo.txt','utf8',(err,data) => {
+fs.readFile('./1_INTRO/utilizando_modulos/arquivo.txt','utf8',(err,data) => {
     if (err) {
         console.log(err); // pode pegar err.message
         return;
@@ -11,7 +11,7 @@ fs.readFile('arquivo.txt','utf8',(err,data) => {
     console.log("-----------------------");
 });
 
-fs.readFile('minhasLinguagensFavoritas.txt', 'utf8', (err, data) => {
+fs.readFile('./1_INTRO/utilizando_modulos/minhasLinguagensFavoritas.txt', 'utf8', (err, data) => {
     if (err) {
         console.log(err.message);
         return;
