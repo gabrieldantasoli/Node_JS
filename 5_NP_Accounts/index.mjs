@@ -33,7 +33,7 @@ function operation() {
                 
                 break;
             case "Depositar":
-                
+                depositar();
                 break;
             case "Sacar":
                 
@@ -87,6 +87,51 @@ function buildAccount() {
     .catch((err) => console.log(err.messge()))
 }
 
-// Consulatar Saldo :
+// Consultar Saldo :
 
 
+
+// Add amount to user account : 
+function depositar() {
+    inquirer.prompt([
+        {
+            name: "accountName",
+            message: "Qual o nome da conta para fazer o deposito ? ",
+        }
+    ])
+    .then((answer) => {
+        const accountName = answer["accountName"];
+
+        if (fs.existsSync(`accounts/${accountName}.json`)) {
+            inquirer.prompt([
+                {
+                    name: "amount",
+                    message: "Quanto você quer depositar ? ",
+                }
+            ])
+            .then((answer) => {
+                let amount = Number.parseInt(answer["amount"]);
+
+                console.log(amount)
+                if (typeof(amount) == NaN) {
+                    console.log(chalk.bgYellowBright("Somente valores inteiros podem ser depositados!"));
+                    return operation();
+                }
+                    
+
+                updateAmount(amount);
+
+                operation();
+            })
+            .catch((err) => console.log(err));
+        } else {
+            console.log(chalk.bgRed.white("Esta conta não existe em nossos bancos de de dados!"));
+            operation();
+        }
+    }) 
+    .catch((err) => console.log(err));
+}
+
+function updateAmount(amount) {
+
+}
