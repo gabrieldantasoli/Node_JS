@@ -30,7 +30,7 @@ function operation() {
                 createAccount();
                 break;
             case "Consultar Saldo":
-                
+                getAccountAmount();
                 break;
             case "Depositar":
                 depositar();
@@ -112,14 +112,13 @@ function depositar() {
             .then((answer) => {
                 let amount = Number.parseInt(answer["amount"]);
 
-                console.log(amount)
-                if (typeof(amount) == NaN) {
+
+                if (!Number.isInteger(amount)) {
                     console.log(chalk.bgYellowBright("Somente valores inteiros podem ser depositados!"));
                     return operation();
                 }
-                    
 
-                updateAmount(amount);
+                updateAmount(accountName,amount);
 
                 operation();
             })
@@ -132,6 +131,66 @@ function depositar() {
     .catch((err) => console.log(err));
 }
 
-function updateAmount(amount) {
+function updateAmount(accountName,amount=0) {
+    const account = getAccount(accountName);
 
+    if (amount < 0 && Math.abs(amount) > account.balance) {
+        console.log(chalk.bgRed.black("Você não tem dinheiro suficiente!"));
+        return operation();
+    }
+
+    account.balance = parseInt(account.balance) + amount;
+    fs.writeFileSync(`accounts/${accountName}.json`,
+    JSON.stringify(account),
+    function (err) {
+        console.log(err);
+    })
+
+    if (amount > 0) {
+        console.log(chalk.bgGreen.black(`Você depositou R$${Math.abs(amount)} na conta de ${accountName} !`));
+    } else {
+        console.log(chalk.bgGreen.black(`Você sacou R$${Math.abs(amount)} da sua conta!`));
+    }
+}
+
+function getAccount(accountName) {
+    const accountJSON = fs.readFileSync(`accounts/${accountName}.json`,{
+        encoding: "utf8",
+        flag: "r",
+    })
+
+    return JSON.parse(accountJSON);
+}
+
+function getAccountAmount() {
+    inquirer.prompt([
+        {
+            name: "accountName",
+            message: "Qual o nome da conta para ver o saudo ? ",
+        }
+    ])
+    .then((answer) => {
+        const accountName = answer["accountName"];
+
+        if (fs.existsSync(`accounts/${accountName}.json`)) {
+            inquirer.prompt([
+                {
+                    name: "amount",
+                    message: "Quanto você quer depositar ? ",
+                }
+            ])
+            .then((answer) => {
+                let amount = Number.parseInt(answer["amount"]);
+
+                console.log(`Você tem R$${amount.balance} .`);
+                
+                operation();
+            })
+            .catch((err) => console.log(err));
+        } else {
+            console.log(chalk.bgRed.white("Esta conta não existe em nossos bancos de de dados!"));
+            operation();
+        }
+    }) 
+    .catch((err) => console.log(err));
 }
