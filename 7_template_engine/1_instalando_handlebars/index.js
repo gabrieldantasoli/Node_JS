@@ -7,7 +7,9 @@ app.engine('handlebars', exphbs.engine);
 app.set('view engine', 'handlebars');
 
 app.get('/dashboard', (req, res) => {
-    res.render('dashboard');
+
+    const itens = ["Item a","Item b","Item c"];
+    res.render('dashboard', { itens });
 })
 
 app.get('/', (req, res) => {
