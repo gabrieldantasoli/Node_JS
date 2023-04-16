@@ -86,6 +86,55 @@ app.get('/books/edit/:id', (req, res) => {
     })
 });
 
+app.get('/books/delete/:id', (req, res) => {
+    const id = req.params.id;
+
+    const select = `SELECT * FROM books WHERE i_id_books = ${id}`;
+
+    conn.query(select, function(err, data) {
+        if (err) {
+            console.log(err);
+            return;
+        };
+
+        const book = data[0];
+        res.render('confirmdelete', { book });
+    });
+});
+
+app.post('/books/updatebook', (req, res) => {
+    const id = req.body.id;
+    const title = req.body.title;
+    const pagesqtd = req.body.pagesqtd;
+
+    const updateQuery = `UPDATE books SET s_title_books="${title}", s_pageqtd_books=${pagesqtd} where i_id_books=${id}`;
+
+    conn.query(updateQuery, function(err) {
+        if (err) {
+            console.log(err);
+            return;
+        };
+
+        res.redirect('/books');
+    });
+});
+
+app.post('/books/confirmdelete', (req, res) => {
+    const id = req.body.id;
+
+    const deleteQuery = `DELETE FROM books WHERE i_id_books = ${id}`;
+
+    conn.query(deleteQuery, function(err) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+
+        res.redirect("/books");
+    });
+});
+
+
 const conn = mysql.createConnection({
     host: 'localhost',
     user: 'root',

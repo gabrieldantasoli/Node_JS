@@ -1,7 +1,10 @@
 <section class="divCenter width100 height100 formbook">
     <h1>Edite Um Livro : </h1>
 
-    <form action="/books/insertbook" method="POST" id="form_cadastro_books">
+    <form action="/books/updatebook" method="POST" id="form_cadastro_books">
+        <div class="form-control">
+            <input type="hidden" name="id" id="id" value="{{book.i_id_books}}" >
+        </div>
         <div class="form-control">
             <label for="title">Título : </label>
             <input type="text" name="title" id="title" placeholder="Digite o título do livro" value="{{book.s_title_books}}" required>

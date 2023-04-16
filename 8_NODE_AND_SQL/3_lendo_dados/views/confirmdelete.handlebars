@@ -1,0 +1,7 @@
+<h1><span class="red">DELETE : {{book.s_title_books}}</span></h1>
+
+<form action="/books/confirmdelete" method="post">
+    <input type="hidden" name="id" value="{{book.i_id_books}}">
+    <input type="submit" value="DELETE">
+    <a href="/books/{{book.i_id_books}}">CANCEL</a>
+</form>
