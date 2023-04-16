@@ -70,6 +70,22 @@ app.get('/books/:id', (req, res) => {
     });
 });
 
+app.get('/books/edit/:id', (req, res) => {
+    const id = req.params.id;
+
+    const select = `SELECT * FROM books WHERE i_id_books = ${id}`;
+
+    conn.query(select, function(err, data) {
+        if (err) {
+            console.log(err);
+            return;
+        };
+
+        const book = data[0];
+        res.render('editbook', { book });
+    })
+});
+
 const conn = mysql.createConnection({
     host: 'localhost',
     user: 'root',

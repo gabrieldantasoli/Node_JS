@@ -2,6 +2,8 @@
 
 :root {
     --blue: #009dff;
+    --yellow: rgb(0, 255, 26);
+    --red: #ff3232;
 }
 
 * {
@@ -156,6 +158,30 @@ body {
     font-size: 1.4rem;
     border: 2px solid var(--blue);
     transition: ease-in-out 0.3s;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.left.yellow {
+    color: var(--yellow);
+    border: 2px solid var(--yellow);
+}
+
+.left.red {
+    color: var(--red);
+    border: 2px solid var(--red);
+}
+
+.left.yellow:hover {
+    background-color: var(--yellow);
+    box-shadow: 0 0 10px var(--yellow),
+                0 0 20px var(--yellow);
+}
+
+.left.red:hover {
+    background-color: var(--red);
+    box-shadow: 0 0 10px var(--red),
+                0 0 20px var(--red);
 }
 
 .left:hover {
@@ -163,4 +189,8 @@ body {
     color: #fff;
     box-shadow: 0 0 10px var(--blue),
                 0 0 20px var(--blue);
+}
+
+.actions {
+    margin-bottom: 2rem;
 }
