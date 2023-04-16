@@ -39,6 +39,21 @@ app.post('/books/insertbook', (req, res) => {
     });
 });
 
+app.get('/books', (req, res) => {
+    const readQuery = "SELECT * FROM books";
+
+    conn.query(readQuery, function(err, data) {
+        if (err) {
+            console.log(err);
+            return;
+        };
+
+        const data_books = data;
+
+        res.render('books', { data_books });
+    });
+});
+
 const conn = mysql.createConnection({
     host: 'localhost',
     user: 'root',

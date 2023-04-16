@@ -1,0 +1,25 @@
+<h1 class="booksh1">Livro Disponíveis</h1>
+
+<a href="/">Adicionar Livro</a>
+
+<div class="books_container width100">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NOME</th>
+                <th>PÁGINAS</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data_books}}
+                <tr>
+                    <td>{{i_id_books}}</td>
+                    <td>{{s_title_books}}</td>
+                    <td>{{s_pageqtd_books}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    
+</div>
