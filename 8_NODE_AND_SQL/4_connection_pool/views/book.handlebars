@@ -1,0 +1,13 @@
+<div id="book-page">
+    <div class="container">
+        <h1>{{book.s_title_books}}</h1>
+        <p>Este livro tem {{book.s_pageqtd_books}} páginas .</p>
+        
+    </div>
+</div>
+
+<div class="actions">
+    <a class="left yellow" href="/books/edit/{{book.i_id_books}}">Edit this book</a>
+    <a class="left red" href="/books/delete/{{book.i_id_books}}">Delete this book</a>
+</div>
+<a href="/books" class="left">Voltar</a>
