@@ -28,9 +28,10 @@ app.post('/books/insertbook', (req, res) => {
     const title = req.body.title;
     const pagesqtd = req.body.pagesqtd;
 
-    const insertQuery = `INSERT INTO books (s_title_books, s_pageqtd_books) VALUES ('${title}', ${pagesqtd})`;
+    const insertQuery = `INSERT INTO books (??, ??) VALUES (?, ?)`;
+    const data = ['s_title_books','s_pageqtd_books',title, pagesqtd];
 
-    pool.query(insertQuery, function(err) {
+    pool.query(insertQuery, data, function(err) {
         if (err) {
             console.log(err);
         };
@@ -57,9 +58,11 @@ app.get('/books', (req, res) => {
 app.get('/books/:id', (req, res) => {
     const id = req.params.id;
     
-    const select = `SELECT * FROM books WHERE i_id_books = ${id}`;
+    const select = `SELECT * FROM books WHERE ?? = ?`;
 
-    pool.query(select, function(err, data) {
+    const data = ['i_id_books', id];
+
+    pool.query(select, data, function(err, data) {
         if (err) {
             console.log(err);
         };
@@ -73,9 +76,11 @@ app.get('/books/:id', (req, res) => {
 app.get('/books/edit/:id', (req, res) => {
     const id = req.params.id;
 
-    const select = `SELECT * FROM books WHERE i_id_books = ${id}`;
+    const select = `SELECT * FROM books WHERE ?? = ?`;
 
-    pool.query(select, function(err, data) {
+    const data = ['i_id_books', id];
+
+    pool.query(select, data, function(err, data) {
         if (err) {
             console.log(err);
             return;
@@ -89,9 +94,11 @@ app.get('/books/edit/:id', (req, res) => {
 app.get('/books/delete/:id', (req, res) => {
     const id = req.params.id;
 
-    const select = `SELECT * FROM books WHERE i_id_books = ${id}`;
+    const select = `SELECT * FROM books WHERE ?? = ?`;
 
-    pool.query(select, function(err, data) {
+    const data = ['i_id_books', id];
+
+    pool.query(select, data, function(err, data) {
         if (err) {
             console.log(err);
             return;
@@ -107,9 +114,11 @@ app.post('/books/updatebook', (req, res) => {
     const title = req.body.title;
     const pagesqtd = req.body.pagesqtd;
 
-    const updateQuery = `UPDATE books SET s_title_books="${title}", s_pageqtd_books=${pagesqtd} where i_id_books=${id}`;
+    const updateQuery = `UPDATE books SET ?? =?, ??=? where ??=?`;
 
-    pool.query(updateQuery, function(err) {
+    const data = ['s_title_books', title, 's_pageqtd_books', pagesqtd, 'i_id_books', id];
+
+    pool.query(updateQuery,data, function(err) {
         if (err) {
             console.log(err);
             return;
@@ -122,9 +131,11 @@ app.post('/books/updatebook', (req, res) => {
 app.post('/books/confirmdelete', (req, res) => {
     const id = req.body.id;
 
-    const deleteQuery = `DELETE FROM books WHERE i_id_books = ${id}`;
+    const deleteQuery = `DELETE FROM books WHERE ?? = ?`;
 
-    pool.query(deleteQuery, function(err) {
+    const data = ['i_id_books', id];
+
+    pool.query(deleteQuery, data, function(err) {
         if (err) {
             console.log(err);
             return;
