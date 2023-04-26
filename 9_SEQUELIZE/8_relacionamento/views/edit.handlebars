@@ -26,7 +26,7 @@
         <input type="hidden" name="UserId" value="{{user.id}}">
         <div class="form-control">
             <label for="street">Rua:</label>
-            <input type="text" name="street" placeholder="Digite a Rua">
+            <input type="text" name="street" placeholder="Digite a Rua" >
         </div>
         <div class="form-control">
             <label for="number">Número:</label>
@@ -38,4 +38,10 @@
         </div>
         <input type="submit" value="Incluir Endereço">
     </form>
+    {{#each user.Addresses}}
+        <ul>
+            <li><p>#{{this.id}} {{this.street}} {{this.number}} {{this.city}}</p></li>
+        </ul>
+        
+    {{/each}}
 </div>
