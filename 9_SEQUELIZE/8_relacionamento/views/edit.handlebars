@@ -40,7 +40,13 @@
     </form>
     {{#each user.Addresses}}
         <ul>
-            <li><p>#{{this.id}} {{this.street}} {{this.number}} {{this.city}}</p></li>
+            <li><p class="forma">#{{this.id}} {{this.street}} {{this.number}} {{this.city}}
+                <form action="/address/delete" method="POST">
+                    <input type="hidden" name="UserId" value="{{this.UserId}}">
+                    <input type="hidden" name="id" value="{{this.id}}">
+                    <input type="submit" value="Excluir">
+                </form>
+            </p></li>
         </ul>
         
     {{/each}}
