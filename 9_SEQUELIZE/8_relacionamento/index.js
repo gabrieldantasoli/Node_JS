@@ -73,14 +73,6 @@ app.get('/users/edit/:id', async (req, res) => {
     res.render('edit', { user });
 });
 
-app.get('/', async (req, res) => {
-    
-    const users = await User.findAll({ raw: true });
-    
-    res.render("home", { users: users});
-});
-
-
 app.post('/users/update', async (req, res) => {
     const id = req.body.id;
     const name = req.body.name;
@@ -105,6 +97,34 @@ app.post('/users/update', async (req, res) => {
     res.redirect('/');
 })
 
+app.post('/address/create', async (req, res) => {
+
+    const UserId = req.body.UserId;
+    const street = req.body.street;
+    const number = req.body.number;
+    const city = req.body.city;
+
+    const address = {
+        UserId,
+        street,
+        number,
+        city
+    }
+
+    await Address.create(address);
+
+    res.redirect(`/users/edit/${UserId}`);
+});
+
+app.get('/', async (req, res) => {
+    
+    const users = await User.findAll({ raw: true });
+    
+    res.render("home", { users: users});
+});
+
+
+
 
 // conn.sync({force: true}) reseta o BD 
 conn.sync()
@@ -112,4 +132,3 @@ conn.sync()
     app.listen(3000);
 })
 .catch((err) => console.log(err));
-
