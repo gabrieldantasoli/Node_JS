@@ -12,4 +12,4 @@ try {
     console.log("Não foi possível conectar ao banco de dados: mvcdata !");
 };
 
-exports.default = sequelize;
+module.exports = sequelize;
