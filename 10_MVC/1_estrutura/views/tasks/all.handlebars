@@ -1,17 +1,19 @@
 <section class="divAligned centered">
     <h1>Todas as tasks</h1>
-
-    <div id="allTasks">
-        {{#each tasks}}
-            <div class="item">
-                <a href="/" class="tittle">{{this.title}}</a>
-                <div class="actions">
-                    <a href="/" class="green"><i class="bi bi-check2"></i></a>
-                    <a href="/" class="black"><i class="bi bi-pencil-square"></i></a>
-                    <a href="/" class="red"><i class="bi bi-x-lg"></i></a>
+    {{#if tasks.length}}
+        <div id="allTasks">
+            {{#each tasks}}
+                <div class="item">
+                    <a href="/" class="tittle">{{this.title}}</a>
+                    <div class="actions">
+                        <a href="/" class="green"><i class="bi bi-check2"></i></a>
+                        <a href="/" class="black"><i class="bi bi-pencil-square"></i></a>
+                        <a href="/" class="red"><i class="bi bi-x-lg"></i></a>
+                    </div>
                 </div>
-            </div>
-        {{/each}}
-    </div>
-    
+            {{/each}}
+        </div>
+    {{else}}
+        <p>Você Ainda Não Adicionou nenhuma Task!!!</p>
+    {{/if}}
 </section>
