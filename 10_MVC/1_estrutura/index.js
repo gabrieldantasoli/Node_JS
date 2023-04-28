@@ -7,6 +7,8 @@ const conn = require('./db/conn');
 
 const Task = require('./models/Task');
 
+const taskRoutes = require('./routes/taskRoutes');
+
 app.use(
     express.urlencoded({
         extended: true
@@ -23,6 +25,8 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
+
+app.use('/tasks', taskRoutes);
 
 conn.sync()
 .then(() => {

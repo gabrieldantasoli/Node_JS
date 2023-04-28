@@ -4,4 +4,8 @@ module.exports = class TaskContoller {
     static createTask(req, res) {
         res.render('tasks/create');
     }
+
+    static showTasks(req, res) {
+        res.render('tasks/all');
+    }
 };
