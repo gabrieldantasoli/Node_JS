@@ -125,3 +125,67 @@ form.formAction input[type="submit"]:hover {
     box-shadow: 0 0 10px var(--red),
                 0 0 15px var(--red);
 }
+
+#allTasks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#allTasks .item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    width: 90%;
+    max-width: 600px;
+    border-bottom: 2px solid var(--grey);
+    margin-bottom: 0.5rem;
+}
+
+#allTasks .item * {
+    transition: ease-in-out 0.3s;
+}
+
+#allTasks .item:hover {
+    border-bottom: 2px solid var(--red);
+}
+
+#allTasks .item:hover .tittle {
+    color: var(--red);
+}
+
+#allTasks .item .tittle {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: var(--grey);
+}
+
+#allTasks .item .tittle:hover {
+    color: var(--red);
+}
+
+#allTasks .item .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+}
+
+#allTasks .item:hover .actions .green {
+    color: green;
+}
+
+#allTasks .item:hover .actions .red {
+    color: red;
+}
+
+#allTasks .item:hover .actions .black {
+    color: var(--black);
+}
+
+#allTasks .item .actions a {
+    color: var(--grey);
+}
