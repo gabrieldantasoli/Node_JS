@@ -1,1 +1,14 @@
-<h1>Criar tasks</h1>
+<section class="divAligned center">
+    <form action="/tasks/add" method="POST" class="formAction">
+        <h1>Criar task</h1>
+        <div class="form-control">
+            <label for="title">Task: </label>
+            <input type="text" name="title" placeholder="Qual a Task ?" required>
+        </div>
+        <div class="form-control">
+            <label for="description">Descrição: </label>
+            <textarea name="description" placeholder="Descreva a Task !"></textarea>
+        </div>
+        <input type="submit" value="Criar Task">
+    </form>
+</section>
