@@ -73,7 +73,7 @@ h1 {
     align-items: center;
 }
 
-form {
+form.formAction {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -104,6 +104,8 @@ form.formAction input , form.formAction textarea{
     resize: vertical;
     text-align: center;
     padding: 0.3rem 1rem;
+    max-height: 250px;
+    overflow-y: scroll;
 }
 
 form.formAction input[type="submit"] {
@@ -124,6 +126,16 @@ form.formAction input[type="submit"]:hover {
     border: 2px solid var(--white);
     box-shadow: 0 0 10px var(--red),
                 0 0 15px var(--red);
+}
+
+#submitRemove {
+    color: var(--grey);
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
 }
 
 #allTasks {
