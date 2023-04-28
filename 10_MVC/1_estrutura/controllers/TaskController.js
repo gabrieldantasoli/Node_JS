@@ -8,7 +8,7 @@ module.exports = class TaskContoller {
     static async createTaskSave(req, res) {
         const task = {
             title: req.body.title,
-            decription: req.body.decription,
+            description: req.body.description,
             done: false
         }
 
@@ -29,5 +29,13 @@ module.exports = class TaskContoller {
         await Task.destroy({ where: { id: id } });
 
         res.redirect('/tasks');
+    }
+
+    static async updateTask(req, res) {
+        const id = req.params.id;
+
+        const task = await Task.findOne({ raw: true, where: {id: id} });
+
+        res.render(`tasks/edit`, { task });
     }
 };

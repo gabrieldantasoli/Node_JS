@@ -1,0 +1,15 @@
+<section class="divAligned center">
+    <form action="/tasks/add" method="POST" class="formAction">
+        <h1>Editando -{{'>'}} {{task.title}}</h1>
+        <input type="hidden" name="id" value="{{task.id}}">
+        <div class="form-control">
+            <label for="title">Task: </label>
+            <input type="text" name="title" placeholder="Qual a Task ?" value="{{task.title}}" required>
+        </div>
+        <div class="form-control">
+            <label for="description">Descrição: </label>
+            <textarea name="description" placeholder="Descreva a Task !">{{task.description}}</textarea>
+        </div>
+        <input type="submit" value="Editar Task">
+    </form>
+</section>
