@@ -128,7 +128,7 @@ form.formAction input[type="submit"]:hover {
                 0 0 15px var(--red);
 }
 
-#submitRemove {
+#submitRemove, .submitstatus {
     color: var(--grey);
     font-size: 1.3rem;
     display: flex;
@@ -147,6 +147,7 @@ form.formAction input[type="submit"]:hover {
 }
 
 #allTasks .item {
+    position: relative;
     display: flex;
     justify-content: space-between;
     padding: 0 1rem;
@@ -154,6 +155,21 @@ form.formAction input[type="submit"]:hover {
     max-width: 600px;
     border-bottom: 2px solid var(--grey);
     margin-bottom: 0.5rem;
+}
+
+.itemDiv {
+    position: absolute;
+    width: 10px;
+    height: 100%;
+    left: 0;
+}
+
+.itemNotDone {
+    background-color: #4bff14;
+}
+
+.itemDone {
+    background-color: #ff1b1b;
 }
 
 #allTasks .item * {
@@ -186,7 +202,7 @@ form.formAction input[type="submit"]:hover {
     font-size: 1.5rem;
 }
 
-#allTasks .item:hover .actions .green {
+#allTasks .item:hover .actions .submitstatus {
     color: green;
 }
 
@@ -200,4 +216,9 @@ form.formAction input[type="submit"]:hover {
 
 #allTasks .item .actions a {
     color: var(--grey);
+}
+
+
+.leftgreen {
+    border-left: 2px solid green;
 }

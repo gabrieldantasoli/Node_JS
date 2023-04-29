@@ -51,4 +51,16 @@ module.exports = class TaskContoller {
 
         res.redirect('/tasks');
     }
+
+    static async toogleTaskStatus(req, res) {
+        const id = req.body.id;
+
+        const task = {
+            done: req.body.done === '0' ? true : false
+        };
+
+        await Task.update(task, { where: {id: id} });
+
+        res.redirect('/tasks');
+    }
 };

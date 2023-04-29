@@ -3,10 +3,25 @@
     {{#if tasks.length}}
         <div id="allTasks">
             {{#each tasks}}
-                <div class="item">
+                <div class="item" >
+                    {{#if this.done}}
+                        <div class="itemNotDone itemDiv"></div>
+                    {{else}}
+                        <div class="itemDone itemDiv"></div>
+                    {{/if}}
                     <a href="/tasks/edit/{{this.id}}" class="tittle">{{this.title}}</a>
                     <div class="actions">
-                        <a href="/" class="green"><i class="bi bi-check2"></i></a>
+                        <form action="/tasks/updatestatus" method="POST">
+                            <input type="hidden" name="id" value="{{this.id}}">
+                            <input type="hidden" name="done" value="{{this.done}}">
+                            <button class="submitstatus" type="submit">
+                                {{#if this.done}}
+                                    <i class="bi bi-journal-check"></i>
+                                {{else}}
+                                    <i class="bi bi-journal-x"></i>
+                                {{/if}}
+                            </button>
+                        </form>
                         <a href="/tasks/edit/{{this.id}}" class="black"><i class="bi bi-pencil-square"></i></a>
                         <form action="/tasks/remove" method="POST">
                             <input type="hidden" name="id" value={{this.id}}>
