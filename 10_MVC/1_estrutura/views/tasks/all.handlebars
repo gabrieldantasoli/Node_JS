@@ -4,7 +4,7 @@
         <div id="allTasks">
             {{#each tasks}}
                 <div class="item">
-                    <a href="/" class="tittle">{{this.title}}</a>
+                    <a href="/tasks/edit/{{this.id}}" class="tittle">{{this.title}}</a>
                     <div class="actions">
                         <a href="/" class="green"><i class="bi bi-check2"></i></a>
                         <a href="/tasks/edit/{{this.id}}" class="black"><i class="bi bi-pencil-square"></i></a>
