@@ -20,6 +20,4 @@ app.set('view engine', 'handlebars');
 
 app.use(express.json());
 
-console.log("ok");
-
 app.listen(3000);

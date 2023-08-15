@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 
-const uri = "mongodb://localhost:27017/learningMongoNode";
+const uri = "mongodb://port:27017/learningMongoNode";
 
 const client = new MongoClient(uri);
 
