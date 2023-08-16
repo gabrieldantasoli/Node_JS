@@ -24,4 +24,4 @@ let a: boolean = false;
 console.log(a);
 console.log(typeof a);
 
-console.log("tsc -w = automatico!!!")
+console.log("tsc -w = automatico!!!");
