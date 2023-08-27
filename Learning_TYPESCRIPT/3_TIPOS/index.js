@@ -85,3 +85,17 @@ function showUserRole(role) {
 }
 console.log(showUserRole(false));
 console.log(showUserRole("Coordenador"));
+function showId(id) {
+    console.log("O id \u00E9 : ".concat(id, " !"));
+}
+showId(1);
+showId("4298359284");
+function showCoords(obj) {
+    console.log("X: ".concat(obj.x, " Y: ").concat(obj.y, " Z: ").concat(obj.z));
+}
+var coordObj = {
+    x: 100,
+    y: 200,
+    z: 300
+};
+showCoords(coordObj);

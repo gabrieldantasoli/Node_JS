@@ -116,3 +116,35 @@ function showUserRole(role: boolean | string) {
 console.log(showUserRole(false));
 console.log(showUserRole("Coordenador"));
 // --------------------------------------------------------------
+
+// 12 - Type Alias
+type ID = string | number;
+
+function showId(id: ID) {
+    console.log(`O id é : ${id} !`);
+}
+
+showId(1);
+showId("4298359284");
+//---------------------------------------------------------------
+
+// 13 - Interfaces
+interface Point {
+    x: number
+    y: number
+    z: number
+}
+
+function showCoords(obj: Point) {
+    console.log(`X: ${obj.x} Y: ${obj.y} Z: ${obj.z}`);
+}
+
+const coordObj: Point = {
+    x: 100,
+    y: 200,
+    z: 300
+}
+
+showCoords(coordObj);
+//---------------------------------------------------------------
+
