@@ -148,3 +148,13 @@ const coordObj: Point = {
 showCoords(coordObj);
 //---------------------------------------------------------------
 
+// 14 - Literal Types
+let test: "Testando";
+
+function showDirection(direction:"L" | "R" | "B" | "T") {
+    console.log(direction);
+}
+
+//showDirection("ha");
+showDirection("L");
+//---------------------------------------------------------------

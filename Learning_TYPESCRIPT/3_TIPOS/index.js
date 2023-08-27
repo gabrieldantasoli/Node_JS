@@ -99,3 +99,11 @@ var coordObj = {
     z: 300
 };
 showCoords(coordObj);
+//---------------------------------------------------------------
+// 14 - Literal Types
+var test;
+function showDirection(direction) {
+    console.log(direction);
+}
+//showDirection("ha");
+showDirection("L");
