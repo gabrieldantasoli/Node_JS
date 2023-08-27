@@ -54,3 +54,65 @@ const objCoord = {x: 1900, y: 2100};
 passCoordinates(objCoord);
 //--------------------------------------------------------------
 
+// 7 - Propriedades opcionais
+function showNumbers(a?: number, b?: number, c?: number) {
+    if (a) {
+        console.log("A: " + a);
+    }
+    if (b) {
+         console.log("B: " + b);
+    }
+    if (c) {
+        console.log("C: " + c);
+    }
+
+    if (!(a || b || c)) {
+        console.log("Nenhum número!!")
+    }
+}
+
+showNumbers(1,2,3);
+showNumbers(4,5);
+showNumbers(6);
+
+showNumbers();
+
+//---------------------------------------------------------------
+
+// 8 - Validando argumento opcional
+function advancedGreeting(firstName: string, lastName?: string ){
+    if (lastName !== undefined) {
+        return `Olá, ${firstName} ${lastName}, tudo bem?`;
+    }
+
+    return `Olá, ${firstName}, tudo bem`;
+}
+
+console.log(advancedGreeting("Gabriel", "Dantas"));
+console.log(advancedGreeting("Samuel"));
+//---------------------------------------------------------------
+
+//9 - Union Types
+function showBalance(balance: string | number) {
+    console.log(`O saldo da conta é R$${balance}`)
+}
+
+showBalance(10);
+showBalance("10");
+
+const arr2: Array<number | string | boolean> = [1, "ddjdj", true];
+//---------------------------------------------------------------
+
+// 10 - Avancando em Union Types
+
+function showUserRole(role: boolean | string) {
+    if (typeof role === "boolean") {
+        return "Usuário não aprovado!";
+    }
+
+    return `A função do usuário é ${role}!`;
+}
+
+console.log(showUserRole(false));
+console.log(showUserRole("Coordenador"));
+// --------------------------------------------------------------

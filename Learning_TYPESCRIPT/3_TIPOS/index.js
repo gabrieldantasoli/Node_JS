@@ -1,33 +1,32 @@
-"use strict";
 // 1 - arrays
-let numbers = [1, 2, 3, 4];
-const names = ["Gabriel", "Samuel"];
+var numbers = [1, 2, 3, 4];
+var names = ["Gabriel", "Samuel"];
 numbers.push(5);
 numbers.push(6);
 names.push("Alda");
 console.log(numbers);
 //--------------------------------------------------------------
 // 2 - any
-const arr1 = [1, "Teste", true, []];
+var arr1 = [1, "Teste", true, []];
 arr1.push([1, 2, 3, 4, 5]);
 console.log(arr1);
 //--------------------------------------------------------------
 // 3 - funções com parametros tipados
 function soma(a, b) {
-    let soma = a + b;
-    console.log(`A soma de ${a} e ${b} é = `, soma.toFixed(2));
+    var soma = a + b;
+    console.log("A soma de ".concat(a, " e ").concat(b, " \u00E9 = "), soma.toFixed(2));
 }
 soma(2, 9.999);
 //--------------------------------------------------------------
 // 4 - retorno da função
 function greeting(name) {
-    return `Olá, ${name}!`;
+    return "Ol\u00E1, ".concat(name, "!");
 }
 console.log(greeting("Gabriel Dantas"));
 //--------------------------------------------------------------
 // 5 - função anonimas
-setTimeout(() => {
-    const salary = 1000;
+setTimeout(function () {
+    var salary = 1000;
     //console.log(salary);
 }, 2000);
 //--------------------------------------------------------------
@@ -36,6 +35,53 @@ function passCoordinates(coord) {
     console.log("X coordinate: " + coord.x);
     console.log("Y coordinate: " + coord.y);
 }
-const objCoord = { x: 1900, y: 2100 };
+var objCoord = { x: 1900, y: 2100 };
 passCoordinates(objCoord);
 //--------------------------------------------------------------
+// 7 - Propriedades opcionais
+function showNumbers(a, b, c) {
+    if (a) {
+        console.log("A: " + a);
+    }
+    if (b) {
+        console.log("B: " + b);
+    }
+    if (c) {
+        console.log("C: " + c);
+    }
+    if (!(a || b || c)) {
+        console.log("Nenhum número!!");
+    }
+}
+showNumbers(1, 2, 3);
+showNumbers(4, 5);
+showNumbers(6);
+showNumbers();
+//---------------------------------------------------------------
+// 8 - Validando argumento opcional
+function advancedGreeting(firstName, lastName) {
+    if (lastName !== undefined) {
+        return "Ol\u00E1, ".concat(firstName, " ").concat(lastName, ", tudo bem?");
+    }
+    return "Ol\u00E1, ".concat(firstName, ", tudo bem");
+}
+console.log(advancedGreeting("Gabriel", "Dantas"));
+console.log(advancedGreeting("Samuel"));
+//---------------------------------------------------------------
+//9 - Union Types
+function showBalance(balance) {
+    console.log("O saldo da conta \u00E9 R$".concat(balance));
+}
+showBalance(10);
+showBalance("10");
+var arr2 = [1, "ddjdj", true];
+//---------------------------------------------------------------
+// 10 - Avancando em Union Types
+function showUserRole(role) {
+    if (typeof role === "boolean") {
+        return "Usuário não aprovado!";
+    }
+    return "A fun\u00E7\u00E3o do usu\u00E1rio \u00E9 ".concat(role, "!");
+}
+console.log(showUserRole(false));
+console.log(showUserRole("Coordenador"));
