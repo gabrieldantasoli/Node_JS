@@ -12,3 +12,7 @@ function showProductName(obj) {
 }
 var myObj = { name: "Mouse", price: 10.2 };
 showProductName(myObj);
+var myCar = { name: "Fusca", wheels: 4, engine: 1.0, color: "White" };
+var myPen = { name: "Fusca", wheels: false, engine: false, color: "White" };
+console.log(myCar);
+console.log(myPen);
