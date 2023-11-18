@@ -1,4 +1,4 @@
-import express, { query } from "express";
+import express from "express";
 
 import { create, getId, query1 } from "../controllers/UsersController.js";
 
@@ -15,7 +15,6 @@ function  myMiddleware(req, res, next) {
 }
 
 routes.use(myMiddleware);
-
 
 routes.get("/message/:id", getId)
 
