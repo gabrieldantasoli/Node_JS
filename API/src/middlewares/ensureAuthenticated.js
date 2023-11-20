@@ -1,8 +1,9 @@
-import { verify } from "jsonwebtoken";
+import pkg from "jsonwebtoken";
 import AppError from "../utils/AppError.js";
-import { authConfig } from "../configs/auth";
+import { authConfig } from "../configs/auth.js";
 
-export default ensureAuthenticated = async (request, response, next) => {
+export const ensureAuthenticated = async (request, response, next) => {
+    const {verify} = pkg;
     const authHeader = request.headers.authorization;
 
     if (!authHeader) {

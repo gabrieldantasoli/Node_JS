@@ -1,6 +1,6 @@
 import express from "express";
-
-import { create, getId, query1 } from "../controllers/UsersController.js";
+import { create, getId, query1, update } from "../controllers/UsersController.js";
+import { ensureAuthenticated } from "../middlewares/ensureAuthenticated.js";
 
 const routes = express.Router();
 
@@ -14,7 +14,11 @@ function  myMiddleware(req, res, next) {
     next();
 }
 
-routes.use(myMiddleware);
+//routes.use(myMiddleware);
+
+routes.use(ensureAuthenticated);
+
+routes.put("/update", update);
 
 routes.get("/message/:id", getId)
 

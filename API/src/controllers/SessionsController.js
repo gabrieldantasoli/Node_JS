@@ -30,3 +30,4 @@ export const create = async (request, response) => {
 
     return response.json({ user, token });
 }
+
